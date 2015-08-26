@@ -12,9 +12,9 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: http://blog.openalto.org
 root: /
-permalink: :year/:month/:day/:title/
+permalink: :2015/:08/:26/:openalto/
 permalink_defaults:
 
 # Directory
@@ -63,7 +63,7 @@ pagination_dir: page
 # Extensions
 ## Plugins: http://hexo.io/plugins/
 ## Themes: http://hexo.io/themes/
-theme: landscape
+theme: minos
 
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html
