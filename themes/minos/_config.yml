@@ -1,0 +1,16 @@
+# Header
+logo_text: 
+logo_url: images/favicon.png
+menu:
+  Home: /
+  Archives: archives
+  Tags: tags
+  About: about
+
+# Content
+excerpt_link: Read More
+fancybox: true
+
+# Miscellaneous
+google_analytics:
+favicon: images/favicon.png
