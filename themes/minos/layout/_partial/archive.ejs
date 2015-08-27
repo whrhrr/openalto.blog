@@ -67,8 +67,12 @@
     <% }
     break;
   default:
-    page.posts.each(function(post){ %>
-      <%- partial('article', {post: post, index: true}) %>
+    page.posts.each(function(post, i){ %>
+      <% if (i%2 == 0){ %>
+        <%- partial('article', {post: post, index: true, even: true}) %>
+      <% } else { %>
+        <%- partial('article', {post: post, index: true, even: false}) %>
+      <% } %>
     <% })
     if (page.total > 1){ %>
       <nav id="page-nav">

@@ -1,18 +1,14 @@
 <header id="header">
-  <div id="header-outer" class="outer">
-    <div id="header-inner" class="inner">
-      <a id="main-nav-toggle" class="nav-icon" href="javascript:;"></a>
-      <a id="logo" class="logo<%=(theme.logo_text?' logo-text':'')%>" href="<%- url_for('/') %>"><%=(theme.logo_text?theme.logo_text:'')%></a>
-      <nav id="main-nav">
-        <% for (var i in theme.menu){ %>
-          <a class="main-nav-link" href="<%- url_for(theme.menu[i]) %>"><%= i %></a>
-        <% } %>
-      </nav>
-      <nav id="sub-nav">
-        <div id="search-form-wrap">
-          <%- search_form({button: '&#xF002;'}) %>
-        </div>
-      </nav>
+  <div id="top-nav-bar">
+    <div class="nav-logo col-xs-2">
+      <img id="logo-image" src="/css/images/alto_logo.png"></img>
     </div>
+    <div class="nav-item col-xs-8">
+      <% for (var i in theme.menu){ %>
+        <a class="main-nav-link" href="<%- url_for(theme.menu[i]) %>"><%= i %></a>
+      <% } %>
+    </div>
+  </div>
+  <div id="nav-padding">
   </div>
 </header>

@@ -1,6 +1,6 @@
 title: ALTO Guide
 date: 2015-08-25 23:48:42
-tags:
+tags: guide
 ---
 
 # **Part 1: Work Environment Setup**
@@ -17,6 +17,8 @@ tags:
 * [Link for subscribing alto-dev mailing list](https://lists.opendaylight.org/mailman/listinfo/alto-dev)
 
 * If you are interested in other ODL projects and hope to get latest information from that project, go ahead and subscribe to accordingly mailing list.
+
+<!-- more -->
 
 ## Clone ALTO Project from ODL Gerrit
 

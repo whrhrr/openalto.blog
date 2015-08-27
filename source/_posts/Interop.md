@@ -1,6 +1,6 @@
 title: Participate ALTO Interop
 date: 2015-08-25 15:49:51
-tags:
+tags: interop
 ---
 
 ## Motivation
@@ -20,6 +20,8 @@ Every participant who will attend the interop day (locally and remotely) should 
 2. Every local participant, please take a laptop by yourself.
 3. Every server participant should deploy his test server with a public ip. It is necessary for test.
 4. Please download the test template before interop from [here](https://docs.google.com/document/d/1irUuS40aydX5hxQIexz1PTIcnYOJRBj_OYB2lXa3vd8/edit?usp=sharing).
+
+<!-- more -->
 
 ## Step 1. Start
 
