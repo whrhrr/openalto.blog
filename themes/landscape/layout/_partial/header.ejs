@@ -1,11 +1,14 @@
 <header id="header">
-  <div id="header-outer" class="inner">
-    <div id="logo-image"></div>
-    <div id="logo-text-wrap">
-      <a href="<%- url_for() %>" id="logo-text"><%= config.title %></a>
+  <div id="top-nav-bar">
+    <div class="nav-logo col-xs-2">
+      <img id="logo-image" src="/css/images/alto_logo.png"></img>
     </div>
-    <div id="subtitle-wrap">
-      <a href="<%- url_for() %>" id="subtitle"><%= theme.subtitle %></a>
+    <div class="nav-item col-xs-8">
+      <% for (var i in theme.menu){ %>
+        <a class="main-nav-link" href="<%- url_for(theme.menu[i]) %>"><%= i %></a>
+      <% } %>
     </div>
+  </div>
+  <div id="nav-padding">
   </div>
 </header>
