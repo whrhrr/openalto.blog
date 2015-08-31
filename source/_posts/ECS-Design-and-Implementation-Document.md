@@ -37,13 +37,13 @@ Now we have two branches of our ECS implementation. One is totally compatible wi
 
 ## Introduction
 
-ECS is the abbreviation of `Endpoint Cost Service`, which provides the routing cost between endpoints. ECS accepts the pair of endpoints and returns the routing cost of the pair. It provides the routing cost by collecting raw networking data from OpenDayLight with different metrics such as hop counts, bandwidth and user-defined routing cost. This design document contains the information about our latest ECS implementation.
+ECS is the abbreviation of `Endpoint Cost Service`, which provides the routing cost between endpoints. ECS accepts the pair of endpoints and returns the routing cost of the pair. It provides the routing cost by collecting raw network data from OpenDayLight with different metrics such as hop counts, bandwidth and user-defined routing cost. This design document contains the information about our latest ECS implementation.
 
 <!-- more -->
 
 ## Features
 
-The features that provides now:
+The features that provide now:
 
 * Hop count:
 
@@ -100,13 +100,13 @@ The general method we use in ECS is:
 1. Find the actual routing paths which packet will go through;
 2. Compute the routing cost by given paths and link properties.
 
-The fist step in our implementation is that ECS acquires the actual routing path between each endpoint pair. We use the algorithm shown as below to calculate paths. Notice that the paths may be multi-path for some reason such as load balancing.
+The fist step in our implementation is that ECS acquires the actual routing path between each endpoint pair. We use the algorithm shown as below to calculate paths. Notice that the paths may be multi-path for some reasons such as load balancing.
 
 ```
 IF find a existing routing service in ODL:
-    compute routing path by invoke routing service;
+    compute the routing path by invoke routing service;
 ELSE
-    compute routing path by looking up flow table;
+    compute the routing path by looking up flow tables;
 ```
 
 Following is the algorithm of computing routing path by looking up flow tables of each switch:
@@ -148,11 +148,11 @@ ECS has two modules in current ALTO implementation, `alto-provider` module, whic
 
 * A modified L2 Switch:
 
-	We use a modified L2 Switch from ODL because two reason. First is that ODL didn't provide a routing service or another switching module. So ODL's default selection is L2 Switch. Second is that the L2 Switch from ODL use Spain Tree Protocol (STP) as default switching protocol. It's not good enough because STP cause flooding. Each packet in the network managed by L2 Switch would forward to all hosts so the network will be inefficient. Since L2 Switch has legacy codes from Hydrogen release, which use shortest path algorithm to switching. We modify the L2 Switch to enable Dijkstra algorithm using the legacy codes. And we also provide a routing service in L2 Switch to calculate the real path between endpoints.
+	We use a modified L2 Switch from ODL because of two reasons. First is that ODL didn't provide a routing service or another switching module. So ODL's default selection is L2 Switch. Second is that the L2 Switch from ODL use Spanning Tree Protocol (STP) as default switching protocol. It's not good enough because STP causes flooding. Every packet in the network managed by L2 Switch would be forwarded to all hosts so the network will be inefficient. Since L2 Switch has legacy codes from Hydrogen release, which use shortest path algorithm to switching. We modify the L2 Switch to enable Dijkstra algorithm using the legacy codes. And we also provide a routing service in L2 Switch to calculate the real path between endpoints.
 
 ### `alto-provider` Module Overview
 
-The alto-provider module implements the ECS RPC defined in alto-model. The core functions of computing endpoint cost between a endpoint pair are in class `org.opendaylight.alto.provider.ecs.basic.BasicECSImplementation`. 
+The alto-provider module implements the ECS RPC defined in alto-model. The core functions of computing endpoint cost between an endpoint pair are in class `org.opendaylight.alto.provider.ecs.basic.BasicECSImplementation`. 
 
 To compute the endpoint cost, it will first invoke the routing path query service provided by alto-network module to get the routing path, and then compute the endpoint cost according to the routing path, link properties and other metrics such as cost type and cost metric given by user. Currently we support the following cost mode and cost metrics:
 
@@ -170,7 +170,7 @@ alto-network module provide two services, the __`Network Element Service`__ and 
 
 #### Network Element Query Services
 
-Nework Element Query Services support queries of three different network element, including host nodes, flow capable nodes and links, as well as properties of them.
+Nework Element Query Services support queries of three different network elements, including host nodes, flow capable nodes and links, as well as properties of them.
 
 ##### Interface
 
@@ -237,7 +237,7 @@ All implementations are in package ```org.opendaylight.alto.network.topology.imp
 
 #### Routing Path Query Service
 
-With the help of APIs defined above and their implementations, we defined and implemented following routing path query service. Routing Path Query Service aims to provide routing path calculation given some packet fields. 
+With the help of APIs defined above and their implementations, we defined and implemented following routing path query service. Routing Path Query Service aims to provide the routing path calculation given some packet fields. 
 
 ##### Interface
 
@@ -276,4 +276,4 @@ Please see details from [RFC7285](https://tools.ietf.org/html/rfc7285)
   
 * Make ECS independently: 
 
-	Now ECS depend on L2 Switch and OpenDayLight. It's not a good design because ECS may gather data from multiple information sources. The ECS should only depend on the data not on the module.
+	Now ECS depends on L2 Switch and OpenDayLight. It's not a good design because ECS may gather data from multiple information sources. The ECS should only depend on the data not on the module.
